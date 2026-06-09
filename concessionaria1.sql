@@ -3,7 +3,7 @@ USE concessionaria;
 -- ==========================================
 -- 1. POPULANDO VENDEDORES (10 registros)
 -- ==========================================
-INSERT INTO Vendedores (nome, cpf, comissao_percentual) VALUES
+INSERT INTO Vendedores (nome, cpf, comissao_percentual) VALUES 
 ('Carlos Silva', '111.222.333-44', 1.50),
 ('Ana Souza', '555.666.777-88', 2.00),
 ('Roberto Oliveira', '999.888.777-66', 1.80),
@@ -18,7 +18,7 @@ INSERT INTO Vendedores (nome, cpf, comissao_percentual) VALUES
 -- ==========================================
 -- 2. POPULANDO CLIENTES (40 registros)
 -- ==========================================
-INSERT INTO Clientes (nome, cpf, telefone, email) VALUES
+INSERT INTO Clientes (nome, cpf, telefone, email) VALUES 
 ('Marcos Almeida', '123.456.789-00', '6199999-1111', 'marcos@email.com'),
 ('Julia Costa', '987.654.321-11', '6199999-2222', 'julia@email.com'),
 ('Gabriel Nunes', '111.111.111-11', '6199999-0001', 'gabriel@email.com'),
@@ -28,7 +28,7 @@ INSERT INTO Clientes (nome, cpf, telefone, email) VALUES
 ('Thiago Rocha', '555.555.555-55', '6199999-0005', 'thiago@email.com'),
 ('Marina Freire', '666.666.666-66', '6199999-0006', 'marina@email.com'),
 ('Felipe Xavier', '777.777.777-77', '6199999-0007', 'felipe@email.com'),
-('Leticia Vieira', '888.888.888-88', '6199999-0008', 'leticia@email.com'),
+('Letitia Vieira', '888.888.888-88', '6199999-0008', 'leticia@email.com'),
 ('Rodrigo Ramos', '999.999.999-99', '6199999-0009', 'rodrigo@email.com'),
 ('Camila Antunes', '000.000.000-00', '6199999-0010', 'camila@email.com'),
 ('Daniel Rezende', '121.212.121-21', '6199999-0011', 'daniel@email.com'),
@@ -58,12 +58,12 @@ INSERT INTO Clientes (nome, cpf, telefone, email) VALUES
 ('Lorena Padilha', '383.383.383-38', '6199999-0035', 'lorena@email.com'),
 ('Murilo Manso', '494.494.494-49', '6199999-0036', 'murilo@email.com'),
 ('Natalia Rios', '606.606.606-60', '6199999-0037', 'natalia@email.com'),
-('Fabio Guimaraes', '717.717.717-71', '6199999-0038', 'fabio@email.com');
+('Fabio Guimarães', '717.717.717-71', '6199999-0038', 'fabio@email.com');
 
 -- ==========================================
--- 3. POPULANDO VEICULOS (30 registros)
+-- 3. POPULANDO VEÍCULOS (30 registros)
 -- ==========================================
-INSERT INTO Veiculos (marca, modelo, ano, preco, status) VALUES
+INSERT INTO Veiculos (marca, modelo, ano, preco, status) VALUES 
 ('Chevrolet', 'Onix', 2023, 85000.00, 'Vendido'),
 ('Toyota', 'Corolla', 2024, 150000.00, 'Vendido'),
 ('Volkswagen', 'Gol', 2022, 65000.00, 'Vendido'),
@@ -89,16 +89,16 @@ INSERT INTO Veiculos (marca, modelo, ano, preco, status) VALUES
 ('Volkswagen', 'Polo', 2024, 98000.00, 'Vendido'),
 ('Fiat', 'Cronos', 2023, 88000.00, 'Vendido'),
 ('Chery', 'Tiggo 5X', 2023, 119000.00, 'Vendido'),
-('Peugeot', '208', 2023, 82000.00, 'Disponivel'),
-('Citroen', 'C3', 2023, 73000.00, 'Disponivel'),
-('Volvo', 'XC40', 2024, 399000.00, 'Disponivel'),
-('Mercedes-Benz', 'C200', 2024, 350000.00, 'Disponivel'),
-('Mitsubishi', 'L200', 2023, 240000.00, 'Disponivel');
+('Peugeot', '208', 2023, 82000.00, 'Disponível'),
+('Citroen', 'C3', 2023, 73000.00, 'Disponível'),
+('Volvo', 'XC40', 2024, 399000.00, 'Disponível'),
+('Mercedes-Benz', 'C200', 2024, 350000.00, 'Disponível'),
+('Mitsubishi', 'L200', 2023, 240000.00, 'Disponível');
 
 -- ==========================================
 -- 4. POPULANDO VENDAS (25 registros)
 -- ==========================================
-INSERT INTO Vendas (id_cliente, id_vendedor, id_veiculo, data_venda, valor_pago) VALUES
+INSERT INTO Vendas (id_cliente, id_vendedor, id_veiculo, data_venda, valor_pago) VALUES 
 (1, 1, 1, '2026-01-15', 84000.00),
 (2, 2, 2, '2026-02-20', 148000.00),
 (3, 3, 3, '2026-02-22', 63000.00),

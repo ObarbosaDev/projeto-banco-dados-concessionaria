@@ -26,7 +26,7 @@ Table Vendas {
   id_venda int [pk, increment]
   id_cliente int
   id_vendedor int
-  id_veiculo int [unique]
+  id_veiculo int
   data_venda date
   valor_pago decimal
 }

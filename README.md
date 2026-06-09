@@ -10,20 +10,19 @@ O banco de dados representa uma concessionaria de veiculos, controlando clientes
 
 ```text
 projeto-banco-dados-concessionaria/
+├── concessionaria.sql
+├── concessionaria1.sql
+├── concessionaria2.sql
 ├── diagramas/
 │   ├── modelo-logico.dbml
 │   └── modelo-er.png
-└── scripts/
-    ├── 01_ddl.sql
-    ├── 02_dml.sql
-    └── 03_dql.sql
 ```
 
 ## Arquivos
 
-- `scripts/01_ddl.sql`: cria o schema, as tabelas e os relacionamentos.
-- `scripts/02_dml.sql`: realiza a carga inicial com 105 registros entre as tabelas.
-- `scripts/03_dql.sql`: contem consultas estatisticas e relatorios usando `JOIN`, `AVG`, `MAX`, `MIN`, `COUNT` e `SUM`.
+- `concessionaria2.sql`: cria o schema, as tabelas e os relacionamentos.
+- `concessionaria1.sql`: realiza a carga inicial com 105 registros entre as tabelas.
+- `concessionaria.sql`: contem consultas estatisticas e relatorios usando `JOIN`, `AVG`, `COUNT` e `SUM`.
 - `diagramas/modelo-logico.dbml`: modelo logico em formato DBML.
 - `diagramas/modelo-er.png`: diagrama do modelo entidade-relacionamento.
 
@@ -46,9 +45,9 @@ Relacionamentos:
 
 Execute os scripts nesta ordem:
 
-1. `scripts/01_ddl.sql`
-2. `scripts/02_dml.sql`
-3. `scripts/03_dql.sql`
+1. `concessionaria2.sql`
+2. `concessionaria1.sql`
+3. `concessionaria.sql`
 
 ## Banco utilizado
 
