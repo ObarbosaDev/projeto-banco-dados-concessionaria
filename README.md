@@ -87,7 +87,3 @@ Com ele, é possível verificar, por exemplo:
 - SQL
 - DBML
 - GitHub
-
-## Observação
-
-Os scripts SQL foram mantidos com a estrutura original feita pelo grupo. A organização em pastas foi feita apenas para deixar o repositório mais fácil de entender e apresentar.
