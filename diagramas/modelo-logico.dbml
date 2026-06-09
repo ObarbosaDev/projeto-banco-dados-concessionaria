@@ -1,0 +1,36 @@
+Table Clientes {
+  id_cliente int [pk, increment]
+  nome varchar
+  cpf varchar
+  telefone varchar
+  email varchar
+}
+
+Table Vendedores {
+  id_vendedor int [pk, increment]
+  nome varchar
+  cpf varchar
+  comissao_percentual decimal
+}
+
+Table Veiculos {
+  id_veiculo int [pk, increment]
+  marca varchar
+  modelo varchar
+  ano int
+  preco decimal
+  status varchar
+}
+
+Table Vendas {
+  id_venda int [pk, increment]
+  id_cliente int
+  id_vendedor int
+  id_veiculo int [unique]
+  data_venda date
+  valor_pago decimal
+}
+
+Ref: Vendas.id_cliente > Clientes.id_cliente
+Ref: Vendas.id_vendedor > Vendedores.id_vendedor
+Ref: Vendas.id_veiculo - Veiculos.id_veiculo
