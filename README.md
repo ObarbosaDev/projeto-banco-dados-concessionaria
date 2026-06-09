@@ -1,54 +1,92 @@
 # Projeto de Banco de Dados - Concessionaria
 
-Projeto desenvolvido para a disciplina de Laboratorio de Banco de Dados.
+Repositorio desenvolvido pelo **Grupo 5** para a disciplina de **Laboratorio de Banco de Dados**.
 
-## Tema
+O projeto apresenta um banco de dados relacional para uma concessionaria de veiculos, contemplando modelo entidade-relacionamento, script DDL, carga inicial DML e consultas DQL com relatorios e estatisticas.
 
-O banco de dados representa uma concessionaria de veiculos, controlando clientes, vendedores, veiculos e vendas realizadas.
+## Objetivo
 
-## Estrutura do repositorio
+O objetivo deste trabalho e demonstrar a construcao de um projeto de banco de dados completo, desde a modelagem logica ate a criacao das tabelas, insercao de dados e elaboracao de consultas para analise das informacoes cadastradas.
+
+O modelo foi pensado para representar uma concessionaria que controla:
+
+- clientes cadastrados;
+- vendedores da concessionaria;
+- veiculos disponiveis ou vendidos;
+- vendas realizadas, relacionando cliente, vendedor e veiculo.
+
+## Estrutura do Repositorio
 
 ```text
 projeto-banco-dados-concessionaria/
-├── concessionaria.sql
-├── concessionaria1.sql
-├── concessionaria2.sql
-├── diagramas/
-│   ├── modelo-logico.dbml
-│   └── modelo-er.png
+|-- README.md
+|-- diagramas/
+|   |-- modelo-er.png
+|   `-- modelo-logico.dbml
+`-- scripts/
+    |-- concessionaria2.sql
+    |-- concessionaria1.sql
+    `-- concessionaria.sql
 ```
 
-## Arquivos
+## Entregaveis
 
-- `concessionaria2.sql`: cria o schema, as tabelas e os relacionamentos.
-- `concessionaria1.sql`: realiza a carga inicial com 105 registros entre as tabelas.
-- `concessionaria.sql`: contem consultas estatisticas e relatorios usando `JOIN`, `AVG`, `COUNT` e `SUM`.
-- `diagramas/modelo-logico.dbml`: modelo logico em formato DBML.
-- `diagramas/modelo-er.png`: diagrama do modelo entidade-relacionamento.
+| Requisito | Arquivo | Descricao |
+| --- | --- | --- |
+| Projeto logico | `diagramas/modelo-er.png` | Diagrama do modelo entidade-relacionamento. |
+| Modelo em texto | `diagramas/modelo-logico.dbml` | Representacao do modelo logico em DBML. |
+| Script DDL | `scripts/concessionaria2.sql` | Criacao do banco, tabelas, chaves primarias e chaves estrangeiras. |
+| Script DML | `scripts/concessionaria1.sql` | Carga inicial com 105 registros distribuidos entre as tabelas. |
+| Script DQL | `scripts/concessionaria.sql` | Consultas de relatorio e estatisticas usando relacionamentos entre tabelas. |
 
-## Modelo logico
+## Modelo de Dados
 
-Entidades principais:
+O banco de dados utiliza quatro tabelas principais:
 
-- `Clientes`: pessoas que compram veiculos.
-- `Vendedores`: funcionarios responsaveis pelas vendas.
-- `Veiculos`: veiculos disponiveis ou vendidos.
-- `Vendas`: registro das vendas realizadas.
+- `Clientes`: armazena os dados dos clientes da concessionaria.
+- `Vendedores`: armazena os vendedores e o percentual de comissao.
+- `Veiculos`: armazena os veiculos, seus valores e status.
+- `Vendas`: registra as vendas realizadas, relacionando cliente, vendedor e veiculo.
 
-Relacionamentos:
+## Relacionamentos
 
-- Um cliente pode possuir varias vendas.
-- Um vendedor pode realizar varias vendas.
-- Um veiculo pode estar vinculado a uma unica venda.
+O modelo possui os seguintes relacionamentos:
 
-## Ordem de execucao
+- `Vendas.id_cliente` referencia `Clientes.id_cliente`.
+- `Vendas.id_vendedor` referencia `Vendedores.id_vendedor`.
+- `Vendas.id_veiculo` referencia `Veiculos.id_veiculo`.
 
-Execute os scripts nesta ordem:
+Na pratica, a tabela `Vendas` funciona como a tabela central do projeto, pois conecta os dados de clientes, vendedores e veiculos para permitir consultas e relatorios.
 
-1. `concessionaria2.sql`
-2. `concessionaria1.sql`
-3. `concessionaria.sql`
+## Passo a Passo de Execucao
 
-## Banco utilizado
+Para testar o projeto em um banco MySQL, execute os arquivos nesta ordem:
 
-Os scripts foram escritos para MySQL.
+1. Execute `scripts/concessionaria2.sql` para criar o banco de dados `concessionaria` e suas tabelas.
+2. Execute `scripts/concessionaria1.sql` para inserir a carga inicial de dados.
+3. Execute `scripts/concessionaria.sql` para gerar os relatorios e estatisticas.
+
+## Consultas e Relatorios
+
+O script DQL apresenta consultas que usam `JOIN` para combinar dados das tabelas relacionadas.
+
+As consultas permitem analisar:
+
+- desempenho dos vendedores;
+- quantidade de vendas realizadas;
+- faturamento total;
+- valor medio das vendas;
+- estatisticas agrupadas por marca de veiculo.
+
+## Tecnologias Utilizadas
+
+- MySQL
+- SQL
+- DBML
+- Git e GitHub
+
+## Observacoes
+
+Os scripts SQL foram mantidos com a estrutura original desenvolvida pelo grupo, apenas organizados em pastas para facilitar a leitura e a avaliacao do projeto.
+
+Este repositorio foi preparado para armazenar os arquivos solicitados na atividade e servir como material de apoio para a apresentacao em sala.
