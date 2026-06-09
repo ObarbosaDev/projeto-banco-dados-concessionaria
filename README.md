@@ -1,21 +1,21 @@
-# Projeto de Banco de Dados - Concessionaria
+# Projeto de Banco de Dados - Concessionária
 
-Repositorio desenvolvido pelo **Grupo 5** para a disciplina de **Laboratorio de Banco de Dados**.
+Repositório desenvolvido pelo **Grupo 5** para a disciplina de **Laboratório de Banco de Dados**.
 
-O projeto apresenta um banco de dados relacional para uma concessionaria de veiculos, contemplando modelo entidade-relacionamento, script DDL, carga inicial DML e consultas DQL com relatorios e estatisticas.
+O tema escolhido foi uma **concessionária de veículos**. A ideia do projeto é simular um banco de dados simples para controlar clientes, vendedores, veículos e vendas realizadas.
 
-## Objetivo
+## Sobre o Projeto
 
-O objetivo deste trabalho e demonstrar a construcao de um projeto de banco de dados completo, desde a modelagem logica ate a criacao das tabelas, insercao de dados e elaboracao de consultas para analise das informacoes cadastradas.
+Neste trabalho, criamos um modelo de banco de dados com quatro tabelas principais:
 
-O modelo foi pensado para representar uma concessionaria que controla:
+- `Clientes`: guarda os dados dos clientes da concessionária.
+- `Vendedores`: guarda os dados dos vendedores e o percentual de comissão.
+- `Veiculos`: guarda os dados dos veículos, como marca, modelo, ano, preço e status.
+- `Vendas`: registra as vendas feitas, relacionando cliente, vendedor e veículo.
 
-- clientes cadastrados;
-- vendedores da concessionaria;
-- veiculos disponiveis ou vendidos;
-- vendas realizadas, relacionando cliente, vendedor e veiculo.
+A tabela `Vendas` é a principal ligação entre as outras tabelas, pois cada venda precisa informar qual cliente comprou, qual vendedor realizou a venda e qual veículo foi vendido.
 
-## Estrutura do Repositorio
+## Estrutura do Repositório
 
 ```text
 projeto-banco-dados-concessionaria/
@@ -29,64 +29,65 @@ projeto-banco-dados-concessionaria/
     `-- concessionaria.sql
 ```
 
-## Entregaveis
+## Arquivos do Projeto
 
-| Requisito | Arquivo | Descricao |
-| --- | --- | --- |
-| Projeto logico | `diagramas/modelo-er.png` | Diagrama do modelo entidade-relacionamento. |
-| Modelo em texto | `diagramas/modelo-logico.dbml` | Representacao do modelo logico em DBML. |
-| Script DDL | `scripts/concessionaria2.sql` | Criacao do banco, tabelas, chaves primarias e chaves estrangeiras. |
-| Script DML | `scripts/concessionaria1.sql` | Carga inicial com 105 registros distribuidos entre as tabelas. |
-| Script DQL | `scripts/concessionaria.sql` | Consultas de relatorio e estatisticas usando relacionamentos entre tabelas. |
-
-## Modelo de Dados
-
-O banco de dados utiliza quatro tabelas principais:
-
-- `Clientes`: armazena os dados dos clientes da concessionaria.
-- `Vendedores`: armazena os vendedores e o percentual de comissao.
-- `Veiculos`: armazena os veiculos, seus valores e status.
-- `Vendas`: registra as vendas realizadas, relacionando cliente, vendedor e veiculo.
+| Arquivo | O que contém |
+| --- | --- |
+| `diagramas/modelo-er.png` | Imagem do diagrama entidade-relacionamento. |
+| `diagramas/modelo-logico.dbml` | Modelo lógico escrito em DBML. |
+| `scripts/concessionaria2.sql` | Script DDL, usado para criar o banco, as tabelas e os relacionamentos. |
+| `scripts/concessionaria1.sql` | Script DML, usado para inserir os dados iniciais no banco. |
+| `scripts/concessionaria.sql` | Script DQL, usado para fazer consultas e relatórios com os dados. |
 
 ## Relacionamentos
 
-O modelo possui os seguintes relacionamentos:
+O banco usa a tabela `Vendas` para relacionar as outras tabelas:
 
-- `Vendas.id_cliente` referencia `Clientes.id_cliente`.
-- `Vendas.id_vendedor` referencia `Vendedores.id_vendedor`.
+- uma venda pertence a um cliente;
+- uma venda é feita por um vendedor;
+- uma venda está ligada a um veículo.
+
+No script, esses relacionamentos são feitos por meio de chaves estrangeiras:
+
+- `Vendas.id_cliente` referencia `Clientes.id_cliente`;
+- `Vendas.id_vendedor` referencia `Vendedores.id_vendedor`;
 - `Vendas.id_veiculo` referencia `Veiculos.id_veiculo`.
 
-Na pratica, a tabela `Vendas` funciona como a tabela central do projeto, pois conecta os dados de clientes, vendedores e veiculos para permitir consultas e relatorios.
+## Como Executar
 
-## Passo a Passo de Execucao
+Para testar o projeto no MySQL, execute os scripts nesta ordem:
 
-Para testar o projeto em um banco MySQL, execute os arquivos nesta ordem:
+1. `scripts/concessionaria2.sql`
+   - cria o banco de dados `concessionaria`;
+   - cria as tabelas;
+   - cria as chaves primárias e estrangeiras.
 
-1. Execute `scripts/concessionaria2.sql` para criar o banco de dados `concessionaria` e suas tabelas.
-2. Execute `scripts/concessionaria1.sql` para inserir a carga inicial de dados.
-3. Execute `scripts/concessionaria.sql` para gerar os relatorios e estatisticas.
+2. `scripts/concessionaria1.sql`
+   - insere os dados iniciais;
+   - o script possui 105 registros distribuídos entre as tabelas.
 
-## Consultas e Relatorios
+3. `scripts/concessionaria.sql`
+   - executa consultas para gerar relatórios e estatísticas.
 
-O script DQL apresenta consultas que usam `JOIN` para combinar dados das tabelas relacionadas.
+## Consultas
 
-As consultas permitem analisar:
+O script de consultas usa `JOIN` para juntar informações de mais de uma tabela.
+
+Com ele, é possível verificar, por exemplo:
 
 - desempenho dos vendedores;
-- quantidade de vendas realizadas;
+- total de vendas realizadas;
 - faturamento total;
-- valor medio das vendas;
-- estatisticas agrupadas por marca de veiculo.
+- valor médio das vendas;
+- estatísticas agrupadas por marca de veículo.
 
 ## Tecnologias Utilizadas
 
 - MySQL
 - SQL
 - DBML
-- Git e GitHub
+- GitHub
 
-## Observacoes
+## Observação
 
-Os scripts SQL foram mantidos com a estrutura original desenvolvida pelo grupo, apenas organizados em pastas para facilitar a leitura e a avaliacao do projeto.
-
-Este repositorio foi preparado para armazenar os arquivos solicitados na atividade e servir como material de apoio para a apresentacao em sala.
+Os scripts SQL foram mantidos com a estrutura original feita pelo grupo. A organização em pastas foi feita apenas para deixar o repositório mais fácil de entender e apresentar.
