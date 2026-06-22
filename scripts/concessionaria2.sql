@@ -3,7 +3,11 @@
 -- Script DDL: criação do banco, tabelas e relacionamentos
 -- ==========================================================
 
-CREATE DATABASE IF NOT EXISTS concessionaria;
+DROP DATABASE IF EXISTS concessionaria;
+CREATE DATABASE concessionaria
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
 USE concessionaria;
 
 -- Tabela de clientes da concessionária.
@@ -13,7 +17,7 @@ CREATE TABLE Clientes (
     cpf VARCHAR(14) UNIQUE NOT NULL,
     telefone VARCHAR(15),
     email VARCHAR(100)
-);
+) ENGINE=InnoDB;
 
 -- Tabela de vendedores e percentual de comissão.
 CREATE TABLE Vendedores (
@@ -21,7 +25,7 @@ CREATE TABLE Vendedores (
     nome VARCHAR(100) NOT NULL,
     cpf VARCHAR(14) UNIQUE NOT NULL,
     comissao_percentual DECIMAL(4,2) NOT NULL
-);
+) ENGINE=InnoDB;
 
 -- Tabela de veículos cadastrados na concessionária.
 CREATE TABLE Veiculos (
@@ -31,7 +35,7 @@ CREATE TABLE Veiculos (
     ano INT NOT NULL,
     preco DECIMAL(10,2) NOT NULL,
     status VARCHAR(20) DEFAULT 'Disponível'
-);
+) ENGINE=InnoDB;
 
 -- Tabela de vendas, relacionando cliente, vendedor e veículo.
 CREATE TABLE Vendas (
@@ -42,7 +46,12 @@ CREATE TABLE Vendas (
     data_venda DATE NOT NULL,
     valor_pago DECIMAL(10,2) NOT NULL,
 
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
-    FOREIGN KEY (id_vendedor) REFERENCES Vendedores(id_vendedor),
-    FOREIGN KEY (id_veiculo) REFERENCES Veiculos(id_veiculo)
-);
+    CONSTRAINT fk_vendas_clientes
+        FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
+
+    CONSTRAINT fk_vendas_vendedores
+        FOREIGN KEY (id_vendedor) REFERENCES Vendedores(id_vendedor),
+
+    CONSTRAINT fk_vendas_veiculos
+        FOREIGN KEY (id_veiculo) REFERENCES Veiculos(id_veiculo)
+) ENGINE=InnoDB;

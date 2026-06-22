@@ -61,6 +61,7 @@ Para testar o projeto no MySQL, execute os scripts nesta ordem:
    - cria o banco de dados `concessionaria`;
    - cria as tabelas;
    - cria as chaves primárias e estrangeiras.
+   - caso o banco já exista, ele é recriado para evitar dados duplicados.
 
 2. `scripts/concessionaria1.sql`
    - insere os dados iniciais;
