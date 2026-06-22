@@ -1,7 +1,12 @@
 USE concessionaria;
 
 -- ==========================================================
--- RELATORIO 1: DESEMPENHO DOS VENDEDORES
+-- PROJETO DE BANCO DE DADOS - CONCESSIONÁRIA
+-- Script DQL: relatórios, views, joins e trigger
+-- ==========================================================
+
+-- ==========================================================
+-- 1. RELATÓRIO: DESEMPENHO DOS VENDEDORES
 -- ==========================================================
 SELECT
     vd.nome AS Vendedor,
@@ -15,7 +20,7 @@ INNER JOIN Vendedores vd ON v.id_vendedor = vd.id_vendedor
 GROUP BY vd.id_vendedor, vd.nome;
 
 -- ==========================================================
--- RELATORIO 2: ESTATISTICAS POR MARCA DE VEICULO
+-- 2. RELATÓRIO: ESTATÍSTICAS POR MARCA DE VEÍCULO
 -- ==========================================================
 SELECT
     vc.marca AS Marca,
@@ -29,7 +34,7 @@ INNER JOIN Veiculos vc ON v.id_veiculo = vc.id_veiculo
 GROUP BY vc.marca;
 
 -- ==========================================================
--- TABELA E TRIGGER DE AUDITORIA DE PRECO DOS VEICULOS
+-- 3. TABELA E TRIGGER DE AUDITORIA DE PREÇO DOS VEÍCULOS
 -- ==========================================================
 CREATE TABLE IF NOT EXISTS Audit_Preco_Veiculos (
     id_audit INT AUTO_INCREMENT PRIMARY KEY,
@@ -69,7 +74,7 @@ END$$
 DELIMITER ;
 
 -- ==========================================================
--- VIEWS
+-- 4. VIEWS
 -- ==========================================================
 CREATE OR REPLACE VIEW v_relatorio_vendas_detalhado AS
 SELECT
@@ -98,7 +103,7 @@ INNER JOIN Vendedores vd ON v.id_vendedor = vd.id_vendedor
 GROUP BY vd.id_vendedor, vd.nome;
 
 -- ==========================================================
--- CONSULTAS DAS VIEWS
+-- 5. CONSULTAS DAS VIEWS
 -- ==========================================================
 SELECT * FROM v_relatorio_vendas_detalhado;
 
@@ -109,10 +114,10 @@ FROM v_comissoes_vendedores
 WHERE Faturamento_Total > 100000;
 
 -- ==========================================================
--- EXEMPLOS DE JOINS
+-- 6. EXEMPLOS DE JOINS
 -- ==========================================================
 
--- INNER JOIN: mostra apenas veiculos que possuem venda registrada.
+-- INNER JOIN: mostra apenas veículos que possuem venda registrada.
 SELECT
     vc.marca,
     vc.modelo,
@@ -121,7 +126,7 @@ SELECT
 FROM Veiculos vc
 INNER JOIN Vendas v ON vc.id_veiculo = v.id_veiculo;
 
--- LEFT JOIN: mostra todos os veiculos, inclusive os que ainda nao foram vendidos.
+-- LEFT JOIN: mostra todos os veículos, inclusive os que ainda não foram vendidos.
 SELECT
     vc.marca,
     vc.modelo,
@@ -138,7 +143,7 @@ FROM Vendas v
 RIGHT JOIN Clientes c ON v.id_cliente = c.id_cliente;
 
 -- ==========================================================
--- TESTE DO TRIGGER DE AUDITORIA
+-- 7. TESTE DO TRIGGER DE AUDITORIA
 -- ==========================================================
 UPDATE Veiculos
 SET preco = 89000.00
