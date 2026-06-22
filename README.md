@@ -37,7 +37,7 @@ projeto-banco-dados-concessionaria/
 | `diagramas/modelo-logico.dbml` | Modelo lógico escrito em DBML. |
 | `scripts/concessionaria2.sql` | Script DDL, usado para criar o banco, as tabelas e os relacionamentos. |
 | `scripts/concessionaria1.sql` | Script DML, usado para inserir os dados iniciais no banco. |
-| `scripts/concessionaria.sql` | Script DQL, usado para fazer consultas e relatórios com os dados. |
+| `scripts/concessionaria.sql` | Script com consultas, relatórios, views, exemplos de joins e trigger de auditoria. |
 
 ## Relacionamentos
 
@@ -79,7 +79,17 @@ Com ele, é possível verificar, por exemplo:
 - total de vendas realizadas;
 - faturamento total;
 - valor médio das vendas;
+- maior e menor valor de venda;
 - estatísticas agrupadas por marca de veículo.
+
+## Views e Trigger
+
+Além das consultas diretas, o projeto também possui views para facilitar a leitura dos dados:
+
+- `v_relatorio_vendas_detalhado`: mostra as vendas com dados do cliente, vendedor e veículo.
+- `v_comissoes_vendedores`: mostra o faturamento e a comissão de cada vendedor.
+
+Também foi criado um trigger de auditoria para registrar alterações no preço dos veículos. Quando o preço de um veículo é alterado, o banco guarda o preço antigo, o preço novo, o veículo alterado, a data e o usuário que fez a alteração.
 
 ## Tecnologias Utilizadas
 
