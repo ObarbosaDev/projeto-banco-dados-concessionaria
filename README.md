@@ -24,9 +24,9 @@ projeto-banco-dados-concessionaria/
 |   |-- modelo-er.png
 |   `-- modelo-logico.dbml
 `-- scripts/
-    |-- concessionaria2.sql
-    |-- concessionaria1.sql
-    `-- concessionaria.sql
+    |-- 01_ddl_criacao_banco.sql
+    |-- 02_dml_carga_inicial.sql
+    `-- 03_dql_consultas_views_joins.sql
 ```
 
 ## Arquivos do Projeto
@@ -35,9 +35,9 @@ projeto-banco-dados-concessionaria/
 | --- | --- |
 | `diagramas/modelo-er.png` | Imagem do diagrama entidade-relacionamento. |
 | `diagramas/modelo-logico.dbml` | Modelo lógico escrito em DBML. |
-| `scripts/concessionaria2.sql` | Script DDL, usado para criar o banco, as tabelas e os relacionamentos. |
-| `scripts/concessionaria1.sql` | Script DML, usado para inserir os dados iniciais no banco. |
-| `scripts/concessionaria.sql` | Script com consultas, relatórios, views, exemplos de joins e trigger de auditoria. |
+| `scripts/01_ddl_criacao_banco.sql` | Script DDL, usado para criar o banco, as tabelas e os relacionamentos. |
+| `scripts/02_dml_carga_inicial.sql` | Script DML, usado para inserir os dados iniciais no banco. |
+| `scripts/03_dql_consultas_views_joins.sql` | Script com consultas, relatórios, views, exemplos de joins e trigger de auditoria. |
 
 ## Relacionamentos
 
@@ -57,18 +57,21 @@ No script, esses relacionamentos são feitos por meio de chaves estrangeiras:
 
 Para testar o projeto no MySQL, execute os scripts nesta ordem:
 
-1. `scripts/concessionaria2.sql`
+1. `scripts/01_ddl_criacao_banco.sql`
    - cria o banco de dados `concessionaria`;
    - cria as tabelas;
-   - cria as chaves primárias e estrangeiras.
+   - cria as chaves primárias e estrangeiras;
    - caso o banco já exista, ele é recriado para evitar dados duplicados.
 
-2. `scripts/concessionaria1.sql`
+2. `scripts/02_dml_carga_inicial.sql`
    - insere os dados iniciais;
    - o script possui 105 registros distribuídos entre as tabelas.
 
-3. `scripts/concessionaria.sql`
-   - executa consultas para gerar relatórios e estatísticas.
+3. `scripts/03_dql_consultas_views_joins.sql`
+   - executa consultas para gerar relatórios e estatísticas;
+   - cria views para facilitar a leitura dos dados;
+   - apresenta exemplos de joins;
+   - cria e testa um trigger de auditoria.
 
 ## Consultas
 
